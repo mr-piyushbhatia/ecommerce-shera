@@ -96,10 +96,7 @@ exports.logoutuser = catchAsyncErrors(async (req, res, next) => {
     await req.user.save()
 
     res.cookie("jwttoken", null, {
-        httpOnly: true,
-        expires: new Date(
-            Date.now()
-    )})
+        httpOnly: true})
     
 
     res.status(200).json({
