@@ -92,7 +92,7 @@ exports.loginuser = catchAsyncErrors(async (req, res, next) => {
 
 // User Logout 
 exports.logoutuser = catchAsyncErrors(async (req, res, next) => {
-    res.clearCookie("jwttoken");
+    res.cookie('jwttoken', '', {expires: new Date(1), path: '/' });
 
     req.user.Tokens =req.user.Tokens.filter(i=> i.Token !== req.cookies.jwttoken)
     await req.user.save()
