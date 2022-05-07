@@ -87,8 +87,8 @@ const App = () => {
           <ProtectedRoute isAdmin={true} exact path='/admin/reviews' component={ProductReviews} />
 
           <Route exact component={Error404} />
-        </Switch>
           {!isAuthenticated ? <Route exact path="/password/forgot" component={ForgotPassword} /> : <Redirect to='/' /> }
+        </Switch>
       </Router>
       <Footer />
     </>
