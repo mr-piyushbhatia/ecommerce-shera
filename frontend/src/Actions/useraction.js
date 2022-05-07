@@ -92,7 +92,7 @@ export const loaduseraction = () => async (dispatch) => {
       payload: data.user,
     });
   } catch (error) {
-    console.log(error.response)
+    // console.log(error.response)
     dispatch({
       type: LOAD_USER_FAIL,
       payload: error.response.data.message,
