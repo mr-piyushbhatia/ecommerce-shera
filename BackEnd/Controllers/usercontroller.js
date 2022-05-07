@@ -95,7 +95,7 @@ exports.logoutuser = catchAsyncErrors(async (req, res, next) => {
     req.user.Tokens =req.user.Tokens.filter(i=> i.Token !== req.cookies.jwttoken)
     await req.user.save()
 
-    res.cookie("jwt", null, {
+    res.cookie("jwttoken", null, {
         httpOnly: true,
         expires: new Date(
             Date.now()
