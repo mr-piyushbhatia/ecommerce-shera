@@ -1,19 +1,26 @@
 // Requiring app 
 const app = require('./app');
 
-// Requiring Routes and using
-app.use(require('./Routes/userrouter'))
-app.use(require('./Routes/productrouter'))
-app.use(require('./Routes/cartrouter'))
-app.use(require('./Routes/orderrouter'))
+// Handling Uncaught Exception 
+process.on('uncaughtException',(err)=>{
+    console.log(`Error ${err}`)
+    console.log('Shutting down the server due to Uncaught Exception')
+    process.exit(1)
+})
 
-// Requiring FileUpload and using
-const fileupload = require('express-fileupload'); 
-app.use(fileupload())
+// Requiring dotenv and configuring
+if(process.env.NODE_ENV !== 'production'){
+const dotenv = require('dotenv');
+dotenv.config({path:'./BackEnd/Config/config.env'})
+}
 
-// Requiring and adding error middleware
-const errormiddleware = require('./Middlewares/error');
-app.use(errormiddleware)
+
+// Defining Port from dotenv 
+const port = process.env.PORT
+
+
+// Requiring Database Connection 
+require('./Database/connection')
 
 // Requiring Cloudinary and configuring
 const cloudinary = require('cloudinary');
@@ -23,23 +30,10 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET_KEY
 })
 
-// Handling Uncaught Exception 
-process.on('uncaughtException',(err)=>{
-    console.log(`Error ${err}`)
-    console.log('Shutting down the server due to Uncaught Exception')
-    process.exit(1)
-})
-
-// Defining Port from dotenv 
-const port = process.env.PORT
-
 // LISTENING 
 const server = app.listen(port,()=>{
     console.log(`Listening at Port: ${port}`)
 })
-
-// Requiring Database Connection 
-require('./Database/connection')
 
 // Unhandled Promise Rejection 
 process.on('unhandledRejection',err=>{
