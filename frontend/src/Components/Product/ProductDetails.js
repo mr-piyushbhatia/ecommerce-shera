@@ -73,8 +73,13 @@ const ProductDetails = ({ match,history }) => {
   };
   const CloseReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
-    setRating(undefined)
-    setComment(undefined)
+    if(isreviewed){
+      setRating(isreviewed.Rating)
+      setComment(isreviewed.Comment)
+    }else{
+      setRating(undefined)
+      setComment(undefined)
+    }
   };
   const reviewSubmitHandler = () => {
     const myForm = {
@@ -92,6 +97,13 @@ const ProductDetails = ({ match,history }) => {
   const isreviewed = product.Reviews && user && product.Reviews.find(elem => elem.User === user._id)
   
   useEffect(() => {
+    if(isreviewed){
+      setRating(isreviewed.Rating)
+      setComment(isreviewed.Comment)
+    }else{
+      setRating(undefined)
+      setComment(undefined)
+    }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -108,17 +120,7 @@ const ProductDetails = ({ match,history }) => {
     }
     dispatch(getproductdetails(match.params.id));
 
-  }, [dispatch, match.params.id, error, alert, reviewError, success]);
-  
-  useEffect(() => {
-    if(isreviewed){
-      setRating(isreviewed.Rating)
-      setComment(isreviewed.Comment)
-    }else{
-      setRating(undefined)
-      setComment(undefined)
-    }
-  }, [dispatch,isreviewed])
+  }, [dispatch, match.params.id, error, alert, reviewError, success, isreviewed]);
   
 
   return (
