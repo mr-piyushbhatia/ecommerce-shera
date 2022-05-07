@@ -102,7 +102,9 @@ export const loaduseraction = () => async (dispatch) => {
 
 export const logoutuseraction = () => async (dispatch) => {
   try {
-    await axios.get("/api/v1/logout");
+    await axios.get("/api/v1/logout",{
+      withCredentials:true
+    });
 
     dispatch({
       type: LOGOUT_USER_SUCCESS,

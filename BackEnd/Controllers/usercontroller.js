@@ -96,9 +96,7 @@ exports.logoutuser = catchAsyncErrors(async (req, res, next) => {
     req.user.Tokens =req.user.Tokens.filter(i=> i.Token !== req.cookies.jwttoken)
     await req.user.save()
 
-    cookies.set('jwttoken', {expires: Date.now()});
-
-    res.status(200).json({
+    res.clearCookie('jwttoken').json({
         success: true,
         message: "Logged Out"
     })
