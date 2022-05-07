@@ -119,7 +119,7 @@ function Login_Register() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error.data.message);
+      alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {

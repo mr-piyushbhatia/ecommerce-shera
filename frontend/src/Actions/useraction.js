@@ -54,7 +54,7 @@ export const loginuseraction = (entereddata) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response,
+      payload: error.response.data.message,
     });
   }
 };
@@ -75,7 +75,7 @@ export const registeruseraction = (entereddata) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: REGISTER_USER_FAIL,
-      payload: error.response,
+      payload: error.response.data.message,
     });
   }
 };
@@ -92,9 +92,10 @@ export const loaduseraction = () => async (dispatch) => {
       payload: data.user,
     });
   } catch (error) {
+    console.log(error.response)
     dispatch({
       type: LOAD_USER_FAIL,
-      payload: error.response,
+      payload: error.response.data.message,
     });
   }
 };
@@ -109,7 +110,7 @@ export const logoutuseraction = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGOUT_USER_FAIL,
-      payload: error.response,
+      payload: error.response.data.message,
     });
   }
 };
