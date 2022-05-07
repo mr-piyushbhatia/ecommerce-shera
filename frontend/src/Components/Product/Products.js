@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./Products.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getallproducts } from "../../Actions/productaction";
-import Loader from "../Loading/Loading";
+import Loading from "../Loading/Loading";
 import ProductCard from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
@@ -11,8 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import MetaData from "../Layout/Metadata";
 
 const categories = [
+  "All",
   "Laptop",
-  "Footwear",
+  "Shirt",
   "Bottom",
   "Tops",
   "Attire",
@@ -26,7 +27,7 @@ const Products = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
+  const [price, setPrice] = useState([0, 200000]);
   const [category, setCategory] = useState("");
 
   const [ratings, setRatings] = useState(0);
@@ -62,7 +63,7 @@ const Products = ({ match }) => {
   return (
     <Fragment>
       {loading ? (
-        <Loader />
+        <Loading />
       ) : (
         <Fragment>
           <MetaData title="PRODUCTS -- ECOMMERCE" />
@@ -83,7 +84,7 @@ const Products = ({ match }) => {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={25000}
+              max={100000}
             />
 
             <Typography>Categories</Typography>
@@ -92,7 +93,7 @@ const Products = ({ match }) => {
                 <li
                   className="category-link"
                   key={category}
-                  onClick={() => setCategory(category)}
+                  onClick={() => category === 'All' ? setCategory('') :setCategory(category)}
                 >
                   {category}
                 </li>
