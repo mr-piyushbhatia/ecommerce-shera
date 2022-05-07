@@ -62,6 +62,7 @@ const App = () => {
           <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
           <ProtectedRoute exact path="/password/update" component={UpdatePassword} />
           <Route exact path="/reset/:token" component={ResetPassword} />
+          {!isAuthenticated && <Route exact path="/password/forgot" component={ForgotPassword} /> }
           
           <Route exact path="/cart" component={Cart} />
           <ProtectedRoute exact path="/shipping" component={Shipping} />
@@ -87,7 +88,6 @@ const App = () => {
           <ProtectedRoute isAdmin={true} exact path='/admin/reviews' component={ProductReviews} />
 
           <Route exact component={Error404} />
-          {!isAuthenticated ? <Route exact path="/password/forgot" component={ForgotPassword} /> : <Redirect to='/' /> }
         </Switch>
       </Router>
       <Footer />
