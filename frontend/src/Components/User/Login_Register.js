@@ -122,9 +122,9 @@ function Login_Register() {
       alert.error(error.data.message);
       dispatch(clearErrors());
     }
-    // if (isAuthenticated) {
-    //   history.push(redirect);
-    // }
+    if (isAuthenticated) {
+      history.push(redirect);
+    }
   }, [dispatch, error, alert, isAuthenticated, history, redirect]);
 
   return (
