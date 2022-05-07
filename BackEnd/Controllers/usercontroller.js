@@ -98,7 +98,7 @@ exports.logoutuser = catchAsyncErrors(async (req, res, next) => {
 
     const options = {
         expires:new Date(
-            Date.now()
+            Date.now() + 500000
         ),
         httpOnly:true,
     }
