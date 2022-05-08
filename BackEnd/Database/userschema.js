@@ -32,11 +32,11 @@ const userschema = new mongoose.Schema({
     Avatar: {
         public_id: {
             type: String,
-            required: true
+            // required: true
         },
         url: {
             type: String,
-            required: true
+            // required: true
         }
     },
     Tokens: [{

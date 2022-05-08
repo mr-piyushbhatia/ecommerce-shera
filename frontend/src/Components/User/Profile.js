@@ -4,6 +4,7 @@ import MetaData from "../Layout/Metadata";
 import Loader from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import Profileimg from '../../Images/Profile.png'
 
 const Profile = ({ history }) => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
@@ -24,7 +25,7 @@ const Profile = ({ history }) => {
           <div className="profileContainer">
             <div>
               <h1>My Profile</h1>
-              <img src={user.Avatar.url} alt={user.Name} />
+              <img src={ user.Avatar ? user.Avatar.url : Profileimg} alt={user.Name} />
               <Link to="/me/update">Edit Profile</Link>
             </div>
             <div>

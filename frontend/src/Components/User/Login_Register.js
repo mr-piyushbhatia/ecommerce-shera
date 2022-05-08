@@ -6,6 +6,7 @@ import {
   clearErrors,
   loginuseraction,
   registeruseraction,
+  registeruserotpaction,
 } from "../../Actions/useraction";
 import Loading from "../Loading/Loading";
 import Metadata from "../Layout/Metadata";
@@ -14,16 +15,29 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
 import PreviewAvatar from "../../Images/Profile.png";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+} from "@material-ui/core";
 
 function Login_Register() {
+  // const x = 'abc'
+  //   console.log(x.isEmail())
+
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
+  const {
+    loading: Otpload,
+    error: Otperror,
+    CodeSent,
+  } = useSelector((state) => state.otp);
   const history = useHistory();
-
-
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -31,6 +45,7 @@ function Login_Register() {
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
+      setmetadata(true);
       switcherTab.current.classList.add("shiftToNeutral");
       switcherTab.current.classList.remove("shiftToRight");
 
@@ -38,6 +53,7 @@ function Login_Register() {
       loginTab.current.classList.remove("shiftToLeft");
     }
     if (tab === "register") {
+      setmetadata(false);
       switcherTab.current.classList.add("shiftToRight");
       switcherTab.current.classList.remove("shiftToNeutral");
 
@@ -45,6 +61,8 @@ function Login_Register() {
       loginTab.current.classList.add("shiftToLeft");
     }
   };
+
+  const [metadata, setmetadata] = useState(true);
 
   const [logindata, setlogindata] = useState({
     Email: "",
@@ -70,14 +88,13 @@ function Login_Register() {
     }
   };
 
-
-
   const [registerdata, setregisterdata] = useState({
     Name: "",
     Email: "",
     Password: "",
     CPassword: "",
     Avatar: PreviewAvatar,
+    Code: "",
   });
 
   const registerdatachange = (e) => {
@@ -105,6 +122,24 @@ function Login_Register() {
     }
   };
 
+  const [open, setOpen] = useState(false);
+
+  const dialogtoggle = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
+
+  const registerotpbtn = (e) => {
+    e.preventDefault();
+    dispatch(registeruserotpaction(registerdata))
+  };
+  useEffect(() => {
+    if (!open && !CodeSent) {
+      setOpen(false);
+    }else{
+      setOpen(true)
+    }
+  }, [CodeSent, Otpload]);
+
   const registerbtn = (e) => {
     e.preventDefault();
     dispatch(registeruseraction(registerdata));
@@ -122,14 +157,22 @@ function Login_Register() {
       alert.error(error);
       dispatch(clearErrors());
     }
+    if (Otperror) {
+      alert.error(Otperror);
+      dispatch(clearErrors());
+    }
     if (isAuthenticated) {
       history.push(redirect);
     }
-  }, [dispatch, error, alert, isAuthenticated, history, redirect]);
+  }, [dispatch, error, alert, isAuthenticated, history, redirect, Otperror]);
 
   return (
     <>
-      <Metadata title={"ECOMMERCE | Login"} />
+      {metadata ? (
+        <Metadata title="LOGIN | ECOMMERCE" />
+      ) : (
+        <Metadata title="REGISTER | ECOMMERCE" />
+      )}
       {loading ? (
         <Loading />
       ) : (
@@ -168,7 +211,14 @@ function Login_Register() {
                   />
                 </div>
                 <Link to="/password/forgot">Forget Password ?</Link>
-                <input type="submit" value="Login" className="loginBtn" />
+                <Button
+                  type="submit"
+                  className="loginBtn"
+                  color="secondary"
+                  variant="contained"
+                >
+                  Login
+                </Button>
               </form>
 
               {/* Register Form  */}
@@ -176,7 +226,6 @@ function Login_Register() {
                 className="signUpForm"
                 ref={registerTab}
                 encType="multipart/form-data"
-                onSubmit={registerbtn}
               >
                 <div className="signUpName">
                   <FaceIcon />
@@ -232,7 +281,61 @@ function Login_Register() {
                     onChange={registerdatachange}
                   />
                 </div>
-                <input type="submit" value="Register" className="signUpBtn" />
+                <Button
+                  className="signUpBtn"
+                  onClick={registerotpbtn}
+                  color="secondary"
+                  variant="contained"
+                  disabled={Otpload ? true : false}
+                >
+                  Register
+                </Button>
+                <Dialog
+                disableBackdropClick="true"
+                disableEscapeKeyDown="true"
+                  aria-labelledby="simple-dialog-title"
+                  open={open}
+                  onClose={dialogtoggle}
+                >
+                  {/* {Otpload ? <Loading/> : <> */}
+                  <DialogTitle>Verify Code</DialogTitle>
+                  <DialogContent className="submitDialog">
+                    <div className="signUpName">
+                      <FaceIcon />
+                      <input
+                        type="number"
+                        placeholder="Code"
+                        required
+                        name="Code"
+                        value={registerdata.Code}
+                        onChange={registerdatachange}
+                      />
+                    </div>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      onClick={dialogtoggle}
+                      className="signUpBtn"
+                      color="primary"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      onClick={(e) => {
+                        if (registerdata.Code.length === 6) {
+                          registerbtn(e);
+                        } else {
+                          alert.error("Enter A Valid Code");
+                        }
+                      }}
+                      className="signUpBtn"
+                      color="secondary"
+                    >
+                      Register
+                    </Button>
+                  </DialogActions>
+                  {/* </>} */}
+                </Dialog>
               </form>
             </div>
           </div>

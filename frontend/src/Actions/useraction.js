@@ -36,6 +36,9 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   CLEAR_ERRORS,
+  REGISTER_USER_OTP_REQUEST,
+  REGISTER_USER_OTP_SUCCESS,
+  REGISTER_USER_OTP_FAIL,
 } from "../Constants/userconstants";
 
 export const loginuseraction = (entereddata) => async (dispatch) => {
@@ -59,6 +62,25 @@ export const loginuseraction = (entereddata) => async (dispatch) => {
   }
 };
 
+export const registeruserotpaction = (entereddata) => async (dispatch) => {
+  try {
+    dispatch({ type: REGISTER_USER_OTP_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.post("/api/v1/register/otp", entereddata, { config });
+    // console.log(data)
+    
+    dispatch({
+      type: REGISTER_USER_OTP_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: REGISTER_USER_OTP_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 export const registeruseraction = (entereddata) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });

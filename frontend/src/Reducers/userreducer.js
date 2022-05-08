@@ -39,6 +39,9 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   CLEAR_ERRORS,
+  REGISTER_USER_OTP_REQUEST,
+  REGISTER_USER_OTP_SUCCESS,
+  REGISTER_USER_OTP_FAIL,
 } from "../Constants/userconstants";
 
 export const userreducer = (state = { user: {} }, action) => {
@@ -94,6 +97,37 @@ export const userreducer = (state = { user: {} }, action) => {
       return state;
   }
 };
+
+export const otpreducer = (state={},action)=>{
+  switch (action.type) {
+    case REGISTER_USER_OTP_REQUEST:
+      return{
+        ...state,
+        loading:true,
+        CodeSent:false
+      }
+    case REGISTER_USER_OTP_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        CodeSent: true,
+      };
+    case REGISTER_USER_OTP_FAIL:
+      return {
+        ...state,
+        loading: false,
+        CodeSent: false,
+        error: action.payload,
+      }; 
+      case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      }; 
+    default:
+      return state
+  }
+}
 
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {

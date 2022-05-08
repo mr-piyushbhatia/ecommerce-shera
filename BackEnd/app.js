@@ -15,11 +15,13 @@ const product = require("./Routes/productrouter");
 const user = require("./Routes/userrouter");
 const order = require("./Routes/orderrouter");
 const cart = require("./Routes/cartrouter");
+const emailotp = require("./Routes/emailotprouter");
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", cart);
+app.use("/api/v1", emailotp);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname,'../frontend/build')))
