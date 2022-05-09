@@ -92,6 +92,23 @@
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
 }
+.submitDialog > div > .otpload{
+  position: relative;
+  left: -2vmax;
+}
+.resendcode{
+  display: block;
+  background-color: inherit;
+  border: none;
+  text-decoration: none;
+  text-align: left;
+  margin: 0.3vmax;
+}
+.resendcode:hover{
+  text-decoration: underline;
+  margin: 0.3vmax;
+  cursor: pointer;
+}
 
 .loginForm > a {
   color: rgba(0, 0, 0, 0.651);

@@ -14,6 +14,7 @@ import "./Login_Register.css";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
+import CodeIcon from "@material-ui/icons/Code";
 import PreviewAvatar from "../../Images/Profile.png";
 import {
   Dialog,
@@ -22,6 +23,7 @@ import {
   DialogTitle,
   Button,
 } from "@material-ui/core";
+import {WaveLoading} from 'react-loadingg'
 
 function Login_Register() {
   // const x = 'abc'
@@ -236,6 +238,7 @@ function Login_Register() {
                     name="Name"
                     value={registerdata.Name}
                     onChange={registerdatachange}
+                        disabled={Otpload ? true : false}
                   />
                 </div>
                 <div className="signUpEmail">
@@ -247,6 +250,7 @@ function Login_Register() {
                     name="Email"
                     onChange={registerdatachange}
                     value={registerdata.Email}
+                        disabled={Otpload ? true : false}
                   />
                 </div>
                 <div className="signUpPassword">
@@ -258,6 +262,7 @@ function Login_Register() {
                     name="Password"
                     onChange={registerdatachange}
                     value={registerdata.Password}
+                        disabled={Otpload ? true : false}
                   />
                 </div>
                 <div className="signUpPassword">
@@ -269,6 +274,7 @@ function Login_Register() {
                     name="CPassword"
                     onChange={registerdatachange}
                     value={registerdata.CPassword}
+                        disabled={Otpload ? true : false}
                   />
                 </div>
 
@@ -279,6 +285,7 @@ function Login_Register() {
                     name="Avatar"
                     accept="image/*"
                     onChange={registerdatachange}
+                        disabled={Otpload ? true : false}
                   />
                 </div>
                 <Button
@@ -301,22 +308,35 @@ function Login_Register() {
                   <DialogTitle>Verify Code</DialogTitle>
                   <DialogContent className="submitDialog">
                     <div className="signUpName">
-                      <FaceIcon />
+                  {Otpload ? <span className="otpload"> <WaveLoading size="small"  color='grey' /> </span> : <CodeIcon />}
+
                       <input
                         type="number"
-                        placeholder="Code"
+                        placeholder={Otpload ? 'Resending Code...' : "Code"}
                         required
                         name="Code"
+                        disabled={Otpload ? true : false}
                         value={registerdata.Code}
                         onChange={registerdatachange}
                       />
                     </div>
+                    {!Otpload &&
+                      <input
+                      className="resendcode"
+                        type="button"
+                        name="ResendCode"
+                        value="Resend Code"
+                        onClick={registerotpbtn}
+                      />
+                    }
+                    
                   </DialogContent>
                   <DialogActions>
                     <Button
                       onClick={dialogtoggle}
                       className="signUpBtn"
                       color="primary"
+                        disabled={Otpload ? true : false}
                     >
                       Cancel
                     </Button>
@@ -330,6 +350,7 @@ function Login_Register() {
                       }}
                       className="signUpBtn"
                       color="secondary"
+                        disabled={Otpload ? true : false}
                     >
                       Register
                     </Button>
