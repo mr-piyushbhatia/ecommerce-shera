@@ -94,7 +94,7 @@
 }
 .submitDialog > div > .otpload{
   position: relative;
-  left: -2vmax;
+  left: -1vmax;
 }
 .resendcode{
   display: block;
@@ -106,7 +106,6 @@
 }
 .resendcode:hover{
   text-decoration: underline;
-  margin: 0.3vmax;
   cursor: pointer;
 }
 
@@ -216,8 +215,13 @@
   }
 
   .loginForm > div > input,
-  .signUpForm > div > input {
+  .signUpForm > div > input{
     padding: 2.5vmax 5vmax;
+    font: 300 1.7vmax cursive;
+  }
+  .submitDialog > div > input {
+    padding: 2.5vmax 5vmax;
+    padding-left: 10vmax;
     font: 300 1.7vmax cursive;
   }
 
@@ -225,6 +229,27 @@
   .signUpForm > div > svg {
     font-size: 2.8vmax;
   }
+  
+.submitDialog > div > svg {
+  font-size: 2.8vmax;
+  transform: translate(1.5vmax,2.5vmax);
+}
+.submitDialog > div > .otpload{
+  position: relative;
+  left: -3vmax;
+}
+.resendcode{
+  display: block;
+  background-color: inherit;
+  border: none;
+  text-decoration: none;
+  text-align: left;
+  margin: 0.3vmax;
+}
+.resendcode:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
   .loginForm > a {
     font: 500 1.8vmax "Gill Sans";
