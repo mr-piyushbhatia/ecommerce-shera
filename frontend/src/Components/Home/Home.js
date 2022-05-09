@@ -6,6 +6,7 @@ import ProductCard from './ProductCard'
 import Metadata from '../Layout/Metadata'
 import Loading from '../Loading/Loading'
 import { useAlert } from 'react-alert'
+import { CommonLoading } from 'react-loadingg';
 
 const Home = () => {
 
@@ -25,7 +26,7 @@ const Home = () => {
     <>
       <Metadata title='ECOMMERCE | Home' />
 
-      {loading ? (<Loading />) :
+      {loading ? (<CommonLoading />) :
         (
           <>
             <div className="banner">

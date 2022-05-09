@@ -1,23 +1,29 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@material-ui/core";
 import MetaData from "../Layout/Metadata";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
-import { getAllUsers, clearErrors, deleteUser } from "../../Actions/useraction";
+import { getAllUsers, clearErrors, deleteUser, logoutuseraction } from "../../Actions/useraction";
 import { DELETE_USER_RESET } from "../../Constants/userconstants";
 
 const UsersList = ({ history }) => {
   const dispatch = useDispatch();
-
   const alert = useAlert();
 
   const { error, users } = useSelector((state) => state.allUsers);
+  const { user } = useSelector((state) => state.user);
 
   const {
     error: deleteError,
@@ -25,8 +31,24 @@ const UsersList = ({ history }) => {
     message,
   } = useSelector((state) => state.profile);
 
+  const [open, setopen] = useState(false);
+
+  const CloseDialogToggle = () => {
+    setopen(false);
+  };
+
   const deleteUserHandler = (id) => {
+    if (user._id === id) {
+      setopen(true);
+    } else {
+      deleteuser(id,false);
+    }
+  };
+  const deleteuser = (id,x) => {
     dispatch(deleteUser(id));
+    if(x){
+      window.location.reload()
+    }
   };
 
   useEffect(() => {
@@ -99,6 +121,28 @@ const UsersList = ({ history }) => {
             >
               <DeleteIcon />
             </Button>
+            <Dialog
+              aria-labelledby="simple-dialog-title"
+              open={open}
+              onClose={CloseDialogToggle}
+            >
+              <DialogTitle>You are deleting Yourself!</DialogTitle>
+              <DialogContent className="submitDialog">
+                You are going to delete yourself! You will no longer have access
+                to this site with your details, Are You Sure?
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={CloseDialogToggle} color="secondary">
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => {CloseDialogToggle(); deleteuser(params.getValue(params.id, "id"),true)}}
+                  color="primary"
+                >
+                  Yes
+                </Button>
+              </DialogActions>
+            </Dialog>
           </Fragment>
         );
       },
