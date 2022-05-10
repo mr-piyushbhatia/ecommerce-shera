@@ -14,11 +14,13 @@ const Product = ({product}) => {
         isHalf:true
     }
     const to = `/product/${product._id}`
+    let src = product.Images[0].url
+    src = src.substring(0, 55) + "f_auto/" + src.substring(55, src.length);
   return (
     <>
         <Link className="productCard" to={to}>
         <div className='img'>
-        <img src={product.Images[0].url} alt={product.Name} />
+        <img src={src} alt={product.Name} />
         </div>
         <p>{product.Name}</p>
         <div>

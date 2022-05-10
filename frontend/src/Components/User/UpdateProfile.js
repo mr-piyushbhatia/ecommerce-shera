@@ -8,7 +8,7 @@ import { clearErrors, updateProfile, loaduseraction } from "../../Actions/userac
 import { useAlert } from "react-alert";
 import { UPDATE_PROFILE_RESET } from "../../Constants/userconstants";
 import MetaData from "../Layout/Metadata";
-import Profile from '../../Images/Profile.png';
+const Profile = 'https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Profile.png'
 
 const UpdateProfile = ({ history }) => {
   const dispatch = useDispatch();
@@ -48,11 +48,17 @@ const UpdateProfile = ({ history }) => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  let src
+  if (user && user.Avatar && user.Avatar.url) {
+    src = user.Avatar.url
+    src = src.substring(0, 55) + "f_auto/" + src.substring(55, src.length);
+  }
+
   useEffect(() => {
     if (user) {
       setName(user.Name);
       setEmail(user.Email);
-      setAvatarPreview(user.Avatar.url);
+      setAvatarPreview(src);
     }
 
     if (error) {
@@ -70,7 +76,7 @@ const UpdateProfile = ({ history }) => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, alert, history, user, isUpdated]);
+  }, [dispatch, error, alert, history, user, isUpdated , src]);
   return (
     <Fragment>
       {loading ? (

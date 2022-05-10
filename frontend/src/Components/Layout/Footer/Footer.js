@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css'
-import playstore from '../../../Images/playstore.png'
-import appstore from '../../../Images/appstore.png'
+const playstore = 'https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/playstore.png'
+const appstore = 'https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/appstore.png'
 
 const Footer = () => {
   return (<>

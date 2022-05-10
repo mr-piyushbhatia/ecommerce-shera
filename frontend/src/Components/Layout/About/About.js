@@ -18,7 +18,7 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="https://res.cloudinary.com/sheraofficials/image/upload/v1651846757/avatars/1651846755597.jpg"
+              src="https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Me.jpg"
               alt="Founder"
             />
             <Typography>Shera</Typography>

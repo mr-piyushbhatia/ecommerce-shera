@@ -1,6 +1,5 @@
 import React from "react";
 import "./sidebar.css";
-import logo from "../../Images/logo.png";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -11,6 +10,7 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
+const logo = "https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/logo.png";
 
 const Sidebar = () => {
   return (

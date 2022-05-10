@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logoutuseraction } from "../../../Actions/useraction";
 import { useDispatch, useSelector } from "react-redux";
-import Profile from '../../../Images/Profile.png';
+const Profile = 'https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Profile.png';
 
 const UserOptions = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -63,7 +63,11 @@ const UserOptions = () => {
     alert.success("Logout Successfully");
     window.location.reload()
   }
-
+  let src
+  if (user && user.Avatar && user.Avatar.url) {
+    src = user.Avatar.url
+    src = src.substring(0, 55) + "f_auto/" + src.substring(55, src.length);
+  }
   return (
     <Fragment>
       <Backdrop open={open} style={{ zIndex: "10" }} />
@@ -78,7 +82,7 @@ const UserOptions = () => {
         icon={
           <img
             className="speedDialIcon"
-            src={user && user.Avatar && user.Avatar.url ? user.Avatar.url : Profile}
+            src={ src ? src : Profile}
             alt="Profile"
           />
         }

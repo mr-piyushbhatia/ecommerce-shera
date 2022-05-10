@@ -15,7 +15,6 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
 import CodeIcon from "@material-ui/icons/Code";
-import PreviewAvatar from "../../Images/Profile.png";
 import {
   Dialog,
   DialogActions,
@@ -24,6 +23,7 @@ import {
   Button,
 } from "@material-ui/core";
 import {WaveLoading} from 'react-loadingg'
+const PreviewAvatar = "https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Profile.png";
 
 function Login_Register() {
   // const x = 'abc'

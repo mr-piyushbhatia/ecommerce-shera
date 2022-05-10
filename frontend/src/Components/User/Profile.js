@@ -4,7 +4,7 @@ import MetaData from "../Layout/Metadata";
 import Loader from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-import Profileimg from '../../Images/Profile.png'
+const Profileimg = 'https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Profile.png'
 
 const Profile = ({ history }) => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
@@ -15,6 +15,12 @@ const Profile = ({ history }) => {
       history.push("/login");
     }
   }, [history, isAuthenticated]);
+
+  let src
+  if (user && user.Avatar && user.Avatar.url) {
+    src = user.Avatar.url
+    src = src.substring(0, 55) + "f_auto/" + src.substring(55, src.length);
+  }
   return (
     <Fragment>
       {loading ? (
@@ -25,7 +31,7 @@ const Profile = ({ history }) => {
           <div className="profileContainer">
             <div>
               <h1>My Profile</h1>
-              <img src={ user.Avatar ? user.Avatar.url : Profileimg} alt={user.Name} />
+              <img src={ src ? src : Profileimg} alt={user.Name} />
               <Link to="/me/update">Edit Profile</Link>
             </div>
             <div>
