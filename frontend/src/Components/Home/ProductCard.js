@@ -16,13 +16,15 @@ const Product = ({product}) => {
   return (
     <>
         <Link className="productCard" to={to}>
+        <div className='img'>
         <img src={product.Images[0].url} alt={product.Name} />
+        </div>
         <p>{product.Name}</p>
         <div>
             <ReactStars {...options} />
             <span>({product.NumofReviews} Reviews)</span>
         </div>
-        <span> ₹{product.Price} </span>
+        <span className='price'> ₹{product.Price} </span>
         </Link>
     </>
   )
