@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { loaduseraction } from "./Actions/useraction";
+// import { loaduseraction } from "./Actions/useraction";
 import { useDispatch, useSelector } from "react-redux";
 import loadable from 'react-loadable'
 
@@ -133,9 +133,9 @@ const App = () => {
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(loaduseraction());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loaduseraction());
+  // }, [dispatch]);
 
   return (
     <>
