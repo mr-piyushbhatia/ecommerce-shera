@@ -7,123 +7,123 @@ import loadable from 'react-loadable'
 
 const ProtectedRoute = loadable({
   loader: ()=> import("./ProtectedRoute"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Header = loadable({
   loader: ()=> import("./Components/Layout/Header/Header"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Footer = loadable({
   loader: ()=> import("./Components/Layout/Footer/Footer"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UserOptions = loadable({
   loader: ()=> import("./Components/Layout/Header/UserOptions"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Home = loadable({
   loader: ()=> import("./Components/Home/Home"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ProductDetails = loadable({
   loader: ()=> import("./Components/Product/ProductDetails"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Products = loadable({
   loader: ()=> import("./Components/Product/Products"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Login_Register = loadable({
   loader: ()=> import("./Components/User/Login_Register"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Error404 = loadable({
   loader: ()=> import("./Components/Layout/404/Error404"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Cart = loadable({
   loader: ()=> import("./Components/Cart/Cart"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const MyOrders = loadable({
   loader: ()=> import("./Components/Order/MyOrders"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const OrderDetails = loadable({
   loader: ()=> import("./Components/Order/MyOrders"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Shipping = loadable({
   loader: ()=> import("./Components/Cart/Shipping"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ConfirmOrder = loadable({
   loader: ()=> import("./Components/Cart/ConfirmOrder"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Payment = loadable({
   loader: ()=> import("./Components/Cart/Payment"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Dashboard = loadable({
   loader: ()=> import("./Components/Admin/Dashboard"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ProductList = loadable({
   loader: ()=> import("./Components/Admin/ProductList"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const OrderList = loadable({
   loader: ()=> import("./Components/Admin/OrderList"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UsersList = loadable({
   loader: ()=> import("./Components/Admin/UsersList"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UpdateUser = loadable({
   loader: ()=> import("./Components/Admin/UpdateUser"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const NewProduct = loadable({
   loader: ()=> import("./Components/Admin/NewProduct"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UpdateProduct = loadable({
   loader: ()=> import("./Components/Admin/UpdateProduct"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ProductReviews = loadable({
   loader: ()=> import("./Components/Admin/ProductReviews"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Profile = loadable({
   loader: ()=> import("./Components/User/Profile"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UpdateProfile = loadable({
   loader: ()=> import("./Components/User/UpdateProfile"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const UpdatePassword = loadable({
   loader: ()=> import("./Components/User/UpdatePassword"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const About = loadable({
   loader: ()=> import("./Components/Layout/About/About"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const Contact = loadable({
   loader: ()=> import("./Components/Layout/Contact/Contact"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ForgotPassword = loadable({
   loader: ()=> import("./Components/User/ForgotPassword"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 const ResetPassword = loadable({
   loader: ()=> import("./Components/User/ResetPassword"),
-  loading: ()=> <div>Loading...</div>
+  loading: ()=> <div></div>
 })
 
 
