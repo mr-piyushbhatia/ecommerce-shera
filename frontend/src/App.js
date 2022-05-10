@@ -1,38 +1,132 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./Components/Layout/Header/Header";
-import Footer from "./Components/Layout/Footer/Footer";
-import Home from "./Components/Home/Home";
-import ProductDetails from "./Components/Product/ProductDetails";
-import Products from "./Components/Product/Products";
-import Login_Register from "./Components/User/Login_Register";
-import Error404 from "./Components/Layout/404/Error404";
 import { loaduseraction } from "./Actions/useraction";
 import { useDispatch, useSelector } from "react-redux";
-import Cart from "./Components/Cart/Cart";
-import MyOrders from "./Components/Order/MyOrders";
-import OrderDetails from "./Components/Order/OrderDetails";
-import Shipping from "./Components/Cart/Shipping";
-import ConfirmOrder from "./Components/Cart/ConfirmOrder";
-import Payment from "./Components/Cart/Payment";
-import ProtectedRoute from "./ProtectedRoute";
-import UserOptions from "./Components/Layout/Header/UserOptions";
-import Dashboard from "./Components/Admin/Dashboard";
-import ProductList from "./Components/Admin/ProductList";
-import OrderList from "./Components/Admin/OrderList";
-import UsersList from "./Components/Admin/UsersList";
-import UpdateUser from "./Components/Admin/UpdateUser";
-import NewProduct from "./Components/Admin/NewProduct";
-import UpdateProduct from "./Components/Admin/UpdateProduct";
-import ProductReviews from "./Components/Admin/ProductReviews";
-import Profile from "./Components/User/Profile";
-import UpdateProfile from "./Components/User/UpdateProfile";
-import UpdatePassword from "./Components/User/UpdatePassword";
-import About from "./Components/Layout/About/About";
-import Contact from "./Components/Layout/Contact/Contact";
-import ForgotPassword from "./Components/User/ForgotPassword";
-import ResetPassword from "./Components/User/ResetPassword";
+import loadable from 'react-loadable'
+
+const ProtectedRoute = loadable({
+  loader: ()=> import("./ProtectedRoute"),
+  loading: ()=> <div>Loading...</div>
+})
+const Header = loadable({
+  loader: ()=> import("./Components/Layout/Header/Header"),
+  loading: ()=> <div>Loading...</div>
+})
+const Footer = loadable({
+  loader: ()=> import("./Components/Layout/Footer/Footer"),
+  loading: ()=> <div>Loading...</div>
+})
+const UserOptions = loadable({
+  loader: ()=> import("./Components/Layout/Header/UserOptions"),
+  loading: ()=> <div>Loading...</div>
+})
+const Home = loadable({
+  loader: ()=> import("./Components/Home/Home"),
+  loading: ()=> <div>Loading...</div>
+})
+const ProductDetails = loadable({
+  loader: ()=> import("./Components/Product/ProductDetails"),
+  loading: ()=> <div>Loading...</div>
+})
+const Products = loadable({
+  loader: ()=> import("./Components/Product/Products"),
+  loading: ()=> <div>Loading...</div>
+})
+const Login_Register = loadable({
+  loader: ()=> import("./Components/User/Login_Register"),
+  loading: ()=> <div>Loading...</div>
+})
+const Error404 = loadable({
+  loader: ()=> import("./Components/Layout/404/Error404"),
+  loading: ()=> <div>Loading...</div>
+})
+const Cart = loadable({
+  loader: ()=> import("./Components/Cart/Cart"),
+  loading: ()=> <div>Loading...</div>
+})
+const MyOrders = loadable({
+  loader: ()=> import("./Components/Order/MyOrders"),
+  loading: ()=> <div>Loading...</div>
+})
+const OrderDetails = loadable({
+  loader: ()=> import("./Components/Order/MyOrders"),
+  loading: ()=> <div>Loading...</div>
+})
+const Shipping = loadable({
+  loader: ()=> import("./Components/Cart/Shipping"),
+  loading: ()=> <div>Loading...</div>
+})
+const ConfirmOrder = loadable({
+  loader: ()=> import("./Components/Cart/ConfirmOrder"),
+  loading: ()=> <div>Loading...</div>
+})
+const Payment = loadable({
+  loader: ()=> import("./Components/Cart/Payment"),
+  loading: ()=> <div>Loading...</div>
+})
+const Dashboard = loadable({
+  loader: ()=> import("./Components/Admin/Dashboard"),
+  loading: ()=> <div>Loading...</div>
+})
+const ProductList = loadable({
+  loader: ()=> import("./Components/Admin/ProductList"),
+  loading: ()=> <div>Loading...</div>
+})
+const OrderList = loadable({
+  loader: ()=> import("./Components/Admin/OrderList"),
+  loading: ()=> <div>Loading...</div>
+})
+const UsersList = loadable({
+  loader: ()=> import("./Components/Admin/UsersList"),
+  loading: ()=> <div>Loading...</div>
+})
+const UpdateUser = loadable({
+  loader: ()=> import("./Components/Admin/UpdateUser"),
+  loading: ()=> <div>Loading...</div>
+})
+const NewProduct = loadable({
+  loader: ()=> import("./Components/Admin/NewProduct"),
+  loading: ()=> <div>Loading...</div>
+})
+const UpdateProduct = loadable({
+  loader: ()=> import("./Components/Admin/UpdateProduct"),
+  loading: ()=> <div>Loading...</div>
+})
+const ProductReviews = loadable({
+  loader: ()=> import("./Components/Admin/ProductReviews"),
+  loading: ()=> <div>Loading...</div>
+})
+const Profile = loadable({
+  loader: ()=> import("./Components/User/Profile"),
+  loading: ()=> <div>Loading...</div>
+})
+const UpdateProfile = loadable({
+  loader: ()=> import("./Components/User/UpdateProfile"),
+  loading: ()=> <div>Loading...</div>
+})
+const UpdatePassword = loadable({
+  loader: ()=> import("./Components/User/UpdatePassword"),
+  loading: ()=> <div>Loading...</div>
+})
+const About = loadable({
+  loader: ()=> import("./Components/Layout/About/About"),
+  loading: ()=> <div>Loading...</div>
+})
+const Contact = loadable({
+  loader: ()=> import("./Components/Layout/Contact/Contact"),
+  loading: ()=> <div>Loading...</div>
+})
+const ForgotPassword = loadable({
+  loader: ()=> import("./Components/User/ForgotPassword"),
+  loading: ()=> <div>Loading...</div>
+})
+const ResetPassword = loadable({
+  loader: ()=> import("./Components/User/ResetPassword"),
+  loading: ()=> <div>Loading...</div>
+})
+
+
 
 const App = () => {
   const dispatch = useDispatch();

@@ -15,7 +15,7 @@ import MetaData from "../Layout/Metadata";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
-import { getAllUsers, clearErrors, deleteUser, logoutuseraction } from "../../Actions/useraction";
+import { getAllUsers, clearErrors, deleteUser} from "../../Actions/useraction";
 import { DELETE_USER_RESET } from "../../Constants/userconstants";
 
 const UsersList = ({ history }) => {
