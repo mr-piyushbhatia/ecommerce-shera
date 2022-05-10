@@ -65,6 +65,7 @@
 }
 .productCard>img{
     width: 14vmax;
+    height: auto;
 }
 .productCard>p{
     font-size: 1.5vmax;
