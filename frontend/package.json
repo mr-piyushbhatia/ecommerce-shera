@@ -15,7 +15,7 @@
     "babel-plugin-import": "^1.13.5",
     "chart.js": "^3.5.1",
     "country-state-city": "^3.0.1",
-    "fs": "^0.0.1-security",
+    "npm-check": "^5.9.2",
     "overlay-navbar": "^1.2.3",
     "react": "^18.0.0",
     "react-alert": "^7.0.3",
@@ -35,9 +35,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "serve": "^13.0.2",
-    "web-vitals": "^2.1.4",
-    "webfontloader": "^1.6.28"
+    "serve": "^13.0.2"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -65,30 +63,47 @@
       "last 1 safari version"
     ]
   },
-  
-    "presets": [
-      "@babel/preset-typescript",
-      "@babel/preset-react"
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@material-ui/core",
+        "libraryDirectory": "/",
+        "camel2DashComponentName": false
+      },
+      "core"
     ],
-    "plugins": [
-      [
-        "babel-plugin-import",
-        {
-          "libraryName": "@material-ui/core",
-          "libraryDirectory": "/",
-          "camel2DashComponentName": false
-        },
-        "core"
-      ],
-      [
-        "babel-plugin-import",
-        {
-          "libraryName": "@material-ui/icons",
-          "libraryDirectory": "/",
-          "camel2DashComponentName": false
-        },
-        "icons"
-      ]
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@material-ui/icons",
+        "libraryDirectory": "/",
+        "camel2DashComponentName": false
+      },
+      "icons"
     ],
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@material-ui/data-grid",
+        "libraryDirectory": "/",
+        "camel2DashComponentName": false
+      },
+      "data-grid"
+    ],
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@material-ui/lab",
+        "libraryDirectory": "/",
+        "camel2DashComponentName": false
+      },
+      "lab"
+    ]
+  ],
   "proxy": "http://localhost:80"
 }
