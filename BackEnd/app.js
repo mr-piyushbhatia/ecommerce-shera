@@ -26,7 +26,6 @@ app.use("/api/v1", emailotp);
 if(process.env.NODE_ENV === 'production'){
     app.get('*.js', function(req, res, next) {
         req.url = req.url + '.gz';
-        console.log(req.url)
         res.set('Content-Encoding', 'gzip');
         res.set('Content-Type', 'text/javascript');
         next();
