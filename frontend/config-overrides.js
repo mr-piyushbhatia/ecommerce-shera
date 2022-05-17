@@ -8,9 +8,6 @@ module.exports = function override(config, env) {
       paths: true,
     })
   );
-  config.plugins.push(
-    new CompressionPlugin()
-  );
 
   return config;
 };
