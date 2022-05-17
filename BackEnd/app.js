@@ -23,25 +23,26 @@ app.use("/api/v1", order);
 app.use("/api/v1", cart);
 app.use("/api/v1", emailotp);
 
-if(process.env.NODE_ENV === 'production'){
-    app.get('*.js', function(req, res, next) {
-        req.url = req.url + '.gz';
-        res.set('Content-Encoding', 'gzip');
-        res.set('Content-Type', 'text/javascript');
-        next();
-       })
+// if(process.env.NODE_ENV === 'production'){
+    // app.get('*.js', function(req, res, next) {
+    //     req.url = req.url + '.gz';
+    //     console.log(req.url)
+    //     res.set('Content-Encoding', 'gzip');
+    //     res.set('Content-Type', 'text/javascript');
+    //     next();
+    //    })
              
-       app.get('*.css', function(req, res, next) {
-        req.url = req.url + '.gz';
-        res.set('Content-Encoding', 'gzip');
-        res.set('Content-Type', 'text/css');
-        next();
-    });
+    //    app.get('*.css', function(req, res, next) {
+    //     req.url = req.url + '.gz';
+    //     res.set('Content-Encoding', 'gzip');
+    //     res.set('Content-Type', 'text/css');
+    //     next();
+    // });
     app.use(express.static(path.join(__dirname,'../frontend/build')))
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'../frontend/build/index.html'))
     })
-}
+// }
 
 // Requiring FileUpload and using
 const fileupload = require('express-fileupload'); 
