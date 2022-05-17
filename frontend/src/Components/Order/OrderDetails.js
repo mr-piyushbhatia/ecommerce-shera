@@ -1,4 +1,4 @@
-import React, {useEffect } from "react";
+import { useEffect } from "react";
 import "./OrderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import Metadata from "../Layout/Metadata";

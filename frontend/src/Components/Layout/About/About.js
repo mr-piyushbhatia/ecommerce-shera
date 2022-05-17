@@ -1,4 +1,3 @@
-import React from "react";
 import "./AboutSection.css";
 import { Button, Typography, Avatar } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";

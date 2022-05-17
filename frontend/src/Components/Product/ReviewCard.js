@@ -1,5 +1,4 @@
 import { Rating } from "@material-ui/lab";
-import React from "react";
 const profilePng = "https://ik.imagekit.io/shera/Images/tr:w-200,f-auto/Profile.png";
 
 const ReviewCard = ({ review }) => {

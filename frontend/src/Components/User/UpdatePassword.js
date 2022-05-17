@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import "./UpdatePassword.css";
 import Loader from "../Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";

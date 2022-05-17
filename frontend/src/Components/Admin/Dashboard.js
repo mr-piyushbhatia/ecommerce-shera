@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Sidebar from "./Sidebar.js";
 import "./Dashboard.css";
 import { Typography } from "@material-ui/core";
