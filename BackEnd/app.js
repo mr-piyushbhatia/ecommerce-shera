@@ -29,14 +29,14 @@ if(process.env.NODE_ENV === 'production'){
         res.set('Content-Encoding', 'gzip');
         res.set('Content-Type', 'text/javascript');
         next();
-       });
-       
-       app.get('*.css', function(req, res, next) {
-        req.url = req.url + '.gz';
-        res.set('Content-Encoding', 'gzip');
-        res.set('Content-Type', 'text/css');
-        next();
-    });
+       })
+             
+    //    app.get('*.css', function(req, res, next) {
+    //     req.url = req.url + '.gz';
+    //     res.set('Content-Encoding', 'gzip');
+    //     res.set('Content-Type', 'text/css');
+    //     next();
+    // });
     app.use(express.static(path.join(__dirname,'../frontend/build')))
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'../frontend/build/index.html'))
