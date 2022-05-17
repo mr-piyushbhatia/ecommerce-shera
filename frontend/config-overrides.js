@@ -9,13 +9,7 @@ module.exports = function override(config, env) {
     })
   );
   config.plugins.push(
-    new CompressionPlugin({
-      filename: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0
-    })
+    new CompressionPlugin()
   );
 
   return config;
