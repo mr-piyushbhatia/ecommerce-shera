@@ -23,7 +23,7 @@ app.use("/api/v1", order);
 app.use("/api/v1", cart);
 app.use("/api/v1", emailotp);
 
-if(process.env.NODE_ENV === 'production'){
+// if(process.env.NODE_ENV === 'production'){
     app.get('*.js', function(req, res, next) {
         req.url = req.url + '.gz';
         res.set('Content-Encoding', 'gzip');
@@ -41,7 +41,7 @@ if(process.env.NODE_ENV === 'production'){
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'../frontend/build/index.html.gz'))
     })
-}
+// }
 
 // Requiring FileUpload and using
 const fileupload = require('express-fileupload'); 

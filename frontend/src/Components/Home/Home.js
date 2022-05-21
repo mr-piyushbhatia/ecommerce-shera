@@ -25,9 +25,6 @@ const Home = () => {
     <>
       <Metadata title='ECOMMERCE | Home' />
 
-      {loading ? (<Loading />) :
-        (
-          <>
             <div className="banner">
               <p>Welcome To Ecommerce</p>
               <h1>FIND AMAZING PRODUCTS HERE</h1>
@@ -41,6 +38,9 @@ const Home = () => {
 
             <h2 className="homeheading">Featured Content</h2>
 
+      {loading ? (<Loading />) :
+        (
+          <>
 
             <div className='container' id="container">
               {products && products.map((product) => {
