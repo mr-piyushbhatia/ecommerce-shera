@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {Route, Switch } from "react-router-dom";
 import { loaduseraction } from "./Actions/useraction";
 import { useDispatch, useSelector } from "react-redux";
 import loadable from 'react-loadable'
@@ -140,7 +140,6 @@ const App = () => {
   return (
     <>
       <Header />
-      <Router>
       {isAuthenticated && <UserOptions user={user} />}
         <Switch>
 
@@ -183,7 +182,6 @@ const App = () => {
 
           <Route exact component={Error404} />
         </Switch>
-      </Router>
       <Footer />
     </>
   );
