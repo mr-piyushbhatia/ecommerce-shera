@@ -140,6 +140,7 @@ function Login_Register() {
     }else{
       setOpen(true)
     }
+    // eslint-disable-next-line
   }, [CodeSent, Otpload]);
 
   const registerbtn = (e) => {

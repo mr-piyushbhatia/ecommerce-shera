@@ -59,21 +59,23 @@ const Products = ({ match }) => {
 
     dispatch(getallproducts(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
-
+  
   return (
     <Fragment>
-      {loading ? (
-        <Loading />
-      ) : (
         <Fragment>
           <MetaData title="PRODUCTS -- ECOMMERCE" />
           <h2 className="productsHeading">Products</h2>
 
           <div className="products">
+      {loading ? (
+        <Loading />
+      ) : ( <>
             {products &&
               products.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
+      </>
+    )}
           </div>
 
           <div className="filterBox">
@@ -133,7 +135,6 @@ const Products = ({ match }) => {
             </div>
           )}
         </Fragment>
-      )}
     </Fragment>
   );
 };
