@@ -11,7 +11,7 @@ module.exports = function override(config, env) {
   config.plugins.push(
     new CompressionPlugin({
       algorithm: "gzip",
-      test: /\.(js|css|html|json)$/,
+      test: /\.(js|css|json)$/,
       threshold: 0,
       minRatio:1
     })
