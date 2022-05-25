@@ -39,7 +39,7 @@ app.use("/api/v1", emailotp);
     });
     app.use(express.static(path.join(__dirname,'../frontend/build')))
     app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'../frontend/build/index.html'))
+        res.sendFile(path.resolve(__dirname,'../frontend/build/index.html.gz'))
     })
 // }
 
