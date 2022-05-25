@@ -14,7 +14,7 @@ const catchAsyncErrors = require("./catchasyncerrors");
 exports.authuser = catchAsyncErrors(async (req, res, next) => {
     const token = req.cookies.jwttoken
     if (!token) {
-        return next(new ErrorHandler('Login First',400))
+        return next(new ErrorHandler('Login First',401))
     }else{
         
         
