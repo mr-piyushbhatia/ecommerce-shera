@@ -318,3 +318,19 @@ exports.deleteuserprofile = catchAsyncErrors(async (req, res, next) => {
     message: "User Deleted!",
   });
 });
+
+exports.timeelapsed = catchAsyncErrors(async(req,res,next)=>{
+  const update = {
+    Product:req.params.product,
+    Time:req.body.date
+  }
+  const user = await User.findById(req.user.id)
+  if(!user){
+    return next(new ErrorHandler('No User Found',400))
+  }
+  const x = await user.timeelapsed(update,req)
+
+  res.status(200).json({
+    success:true
+  })
+})

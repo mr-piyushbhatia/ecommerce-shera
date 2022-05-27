@@ -42,6 +42,9 @@ import {
   REGISTER_USER_OTP_REQUEST,
   REGISTER_USER_OTP_SUCCESS,
   REGISTER_USER_OTP_FAIL,
+  TIMEELAPSED_USER_REQUEST,
+  TIMEELAPSED_USER_SUCCESS,
+  TIMEELAPSED_USER_FAIL,
 } from "../Constants/userconstants";
 
 export const userreducer = (state = { user: {} }, action) => {
@@ -283,6 +286,38 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
       };
 
     case USER_DETAILS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const timeelapsedreducer = (state={}, action) => {
+  switch (action.type) {
+    case TIMEELAPSED_USER_REQUEST:
+      return {
+        ...state,
+        loading:true
+      };
+    case TIMEELAPSED_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
+
+    case TIMEELAPSED_USER_FAIL:
       return {
         ...state,
         loading: false,

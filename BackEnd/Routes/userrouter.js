@@ -9,7 +9,7 @@ const router = express.Router()
 const {authuser, authroles} = require('../Middlewares/authorize');
 
 // Requiring Controllers
-const {homecontroller, registeruser, loginuser, logoutuser, admin, forgotpass, resetpass, getuserdetails, updatepassword, updateprofile, getsingleuser, getallusers,  updateuserprofile, deleteuserprofile} = require('../Controllers/usercontroller');
+const {homecontroller, registeruser, loginuser, logoutuser, admin, forgotpass, resetpass, getuserdetails, updatepassword, updateprofile, getsingleuser, getallusers,  updateuserprofile, deleteuserprofile, timeelapsed} = require('../Controllers/usercontroller');
 
 router.get('/',homecontroller)
 router.post('/register',registeruser)
@@ -28,6 +28,7 @@ router
 .put(authuser,authroles('admin'),updateuserprofile)
 .delete(authuser,authroles('admin'),deleteuserprofile)
 
+router.post('/:product/timeelapsed',authuser,timeelapsed)
 
 // Exporting Router 
 module.exports = router

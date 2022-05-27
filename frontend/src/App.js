@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import {Route, Switch } from "react-router-dom";
 import { loaduseraction } from "./Actions/useraction";
@@ -19,6 +19,10 @@ const Footer = loadable({
 })
 const UserOptions = loadable({
   loader: ()=> import("./Components/Layout/Header/UserOptions"),
+  loading: ()=> <div></div>
+})
+const UserOptions2 = loadable({
+  loader: ()=> import("./Components/Layout/Header/UserOptions2"),
   loading: ()=> <div></div>
 })
 const Home = loadable({
@@ -128,6 +132,7 @@ const ResetPassword = loadable({
 
 
 
+
 const App = () => {
   const dispatch = useDispatch();
 
@@ -137,10 +142,21 @@ const App = () => {
     dispatch(loaduseraction());
   }, [dispatch]);
 
+  const [show, setshow] = useState()
+  useEffect(() => {
+    if(window.location.pathname !== '/login'){
+        setshow(true)
+    }else{
+        setshow(false)
+    }
+  }, [])
+  
+
   return (
     <>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
+      {!isAuthenticated && show && <UserOptions2/>}
         <Switch>
 
           <Route exact path="/" component={Home} />

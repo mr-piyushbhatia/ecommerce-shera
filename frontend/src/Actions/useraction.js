@@ -39,6 +39,9 @@ import {
   REGISTER_USER_OTP_REQUEST,
   REGISTER_USER_OTP_SUCCESS,
   REGISTER_USER_OTP_FAIL,
+  TIMEELAPSED_USER_SUCCESS,
+  TIMEELAPSED_USER_FAIL,
+  TIMEELAPSED_USER_REQUEST,
 } from "../Constants/userconstants";
 
 export const loginuseraction = (entereddata) => async (dispatch) => {
@@ -270,7 +273,7 @@ export const updateProfile = (userData) => async (dispatch) => {
   };
   
   // Delete User
-  export const deleteUser = (id) => async (dispatch) => {
+  export const deleteUser = (id,date) => async (dispatch) => {
     try {
       dispatch({ type: DELETE_USER_REQUEST });
   
@@ -280,6 +283,21 @@ export const updateProfile = (userData) => async (dispatch) => {
     } catch (error) {
       dispatch({
         type: DELETE_USER_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+  
+  export const timeelapsedaction = (productid,date) => async (dispatch) => {
+    try {
+      dispatch({ type: TIMEELAPSED_USER_REQUEST });
+  
+      const { data } = await axios.post(`/api/v1/${productid}/timeelapsed`,{date});
+  
+      dispatch({ type: TIMEELAPSED_USER_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: TIMEELAPSED_USER_FAIL,
         payload: error.response.data.message,
       });
     }

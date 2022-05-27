@@ -51,7 +51,16 @@ const userschema = new mongoose.Schema({
         default:Date.now
     },
     resetpasswordtoken:String,
-    resetpasswordexpire:String
+    resetpasswordexpire:String,
+    TimeElapsed:[{
+        Product:{
+            type:mongoose.Schema.ObjectId,
+            ref:"Product"
+        },
+        Time:{
+            type:Date
+        }
+    }]
 })
 
 // Brcypt Password 
@@ -70,6 +79,19 @@ userschema.methods.generatetoken = async function () {
     this.Tokens = this.Tokens.concat({ Token })
     this.save()
     return Token
+}
+userschema.methods.timeelapsed = async function (update,req) {
+    let already
+    this.TimeElapsed.map((i)=>{
+        if(i.Product == req.params.product){
+            already = true
+            i.Time = update.Time
+        }
+    })
+    if(!already){
+        this.TimeElapsed = this.TimeElapsed.concat(update)
+    }
+    this.save()
 }
 
 userschema.methods.generateresettoken = function () {
