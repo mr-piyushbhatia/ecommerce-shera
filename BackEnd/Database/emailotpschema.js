@@ -10,7 +10,7 @@ const emailotpschema = new mongoose.Schema({
         validate: [validator.isEmail, "Please enter a valid email"]
     },
     registerotp:Number,
-    registerotpexpire:String
+    registerotpexpire:Date
 })
 
 const OTP = mongoose.model('otp', emailotpschema)
