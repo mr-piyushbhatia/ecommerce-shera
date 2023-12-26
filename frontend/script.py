@@ -30,8 +30,8 @@ def deploy_web_application(site_name, physical_path):
     else:
         print(f"Error deploying web application '{site_name}': {std_err.decode('utf-8')}")
 
-if __name__ == "__main_":
-    site_name = 'YourWebApp'
-    physical_path = './build'
 
-    deploy_web_application(site_name, physical_path)
+site_name = 'YourWebApp'
+physical_path = './build'
+
+deploy_web_application(site_name, physical_path)
