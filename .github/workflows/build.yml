@@ -28,7 +28,7 @@ jobs:
           npm run build
 
       - name: Setup Python
-        uses: actions/setup-python@5
+        uses: actions/setup-python@v5
 
       - name: Deploy
         run: |
