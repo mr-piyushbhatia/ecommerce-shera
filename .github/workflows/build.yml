@@ -28,10 +28,12 @@ jobs:
       #     npm i --force
       #     npm run build
 
-      - uses: ChristopheLav/iis-deploy@v1
+      - name: Deploy to Simply
+        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
         with:
-          website-name: 'TestSite'
-          msdeploy-service-url: "ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
-          msdeploy-username: "Administrator"
-          msdeploy-password: "Anil1980"
-          source-path: ${{ github.workspace }}\frontend\build
+          website-name: "Test"
+          server-computer-name: "ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
+          server-username: "Administrator"
+          server-password: "Anil1980"
+          source-path: '\frontend\build\'
+          target-delete: true
