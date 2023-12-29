@@ -31,7 +31,7 @@ jobs:
       - uses: ChristopheLav/iis-deploy@v1
         with:
           website-name: 'TestSite'
-          msdeploy-service-url: "http://ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
+          msdeploy-service-url: "ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
           msdeploy-username: "Administrator"
           msdeploy-password: ${{secrets.PASS}}
           source-path: ${{ github.workspace }}\frontend\build
