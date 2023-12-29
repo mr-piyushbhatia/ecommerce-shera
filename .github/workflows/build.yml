@@ -12,26 +12,25 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     defaults:
         run:
           working-directory: ./frontend
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      # - name: Setup Node
+      #   uses: actions/setup-node@v4
 
-      - name: Run Script
-        run: |
-          npm i --force
-          npm run build
+      # - name: Run Script
+      #   run: |
+      #     npm i --force
+      #     npm run build
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-
-      - name: Deploy
-        run: |
-          python -m pip install -r requirements.txt
-          python script.py
-          
+      - uses: ChristopheLav/iis-deploy@v1
+        with:
+          website-name: 'TestSite'
+          msdeploy-service-url: "http://ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
+          msdeploy-username: "Administrator"
+          msdeploy-password: "KK-QY?!wIUZoU)AQj46a9heFSHGkL*7P"
+          source-path: ${{ github.workspace }}\frontend\build
