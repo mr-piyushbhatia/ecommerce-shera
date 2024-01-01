@@ -32,7 +32,7 @@ jobs:
       #   run: |
 
       - name: Setup WinRM
-        run: winrm set winrm/config/client @{TrustedHosts="*"}
+        run: winrm set winrm/config/client '@{TrustedHosts="*"}'
 
       - name: Deploy
         # run: winrs -r:${{secrets.IP}} -u:Administrator -p:${{secrets.PASS}} powershell ./script.ps1 Test
