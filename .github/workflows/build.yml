@@ -3,8 +3,8 @@ name: Build
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -27,13 +27,11 @@ jobs:
       #   run: |
       #     npm i --force
       #     npm run build
+      
+      # - name: Commit
+      #   run: |
 
-      - name: Deploy to Simply
-        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
-        with:
-          website-name: "Test"
-          server-computer-name: "ec2-13-232-189-129.ap-south-1.compute.amazonaws.com"
-          server-username: "Administrator"
-          server-password: "Anil1980"
-          source-path: '\frontend\build\'
-          target-delete: true
+
+      - name: Deploy
+        # run: winrs -r:${{secrets.IP}} -u:Administrator -p:${{secrets.PASS}} powershell ./script.ps1 Test
+        run: winrs -r:15.206.160.211 -u:Administrator -p:Anil1980 powershell ./script.ps1 Test
